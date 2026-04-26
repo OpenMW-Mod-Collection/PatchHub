@@ -1096,7 +1096,7 @@ return {
         UiModeChanged = function(data)
             ZHIHotbarHUD.setVisible(
                 not uiModesWithNoHUD[data.newMode]
-                and I.UI.isHudVisible()
+                and (I.UI.isHudVisible() or data.oldMode == "Dialogue") -- exiting dialogue always enables HUD
             )
         end
     },
