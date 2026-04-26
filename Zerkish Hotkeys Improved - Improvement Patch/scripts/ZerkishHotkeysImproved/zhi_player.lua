@@ -1094,7 +1094,10 @@ return {
         --     print('ZHI_HotkeyUseItemEvent', data.item.id)
         -- end,
         UiModeChanged = function(data)
-            ZHIHotbarHUD.setVisible(not uiModesWithNoHUD[data.newMode])
+            ZHIHotbarHUD.setVisible(
+                not uiModesWithNoHUD[data.newMode]
+                and I.UI.isHudVisible()
+            )
         end
     },
 
