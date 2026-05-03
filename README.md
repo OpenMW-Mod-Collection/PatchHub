@@ -37,6 +37,7 @@ Override files in the mod's folder with mine.
 Fixes:
 
 - Fixed stunted magicka not disabling magicka regen
+- Fixed casting spells instantly restoring your magicka pool (fix by tinumbra1)
 - MG Conjurer rank now correctly gives 8% max magicka regen (instead of 80%)
 
 Requires: [Imperial Magicka Regeneration](https://www.nexusmods.com/morrowind/mods/53923) version 1.1.1  
