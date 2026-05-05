@@ -676,7 +676,7 @@ end
 local function onSettingsChanged(section, key)
     local data = storage.playerSection(section)
     if not data then
-        print("ZHI hotbarhud onSettingsChanged unknown section", section)
+        -- print("ZHI hotbarhud onSettingsChanged unknown section", section)
         return
     end
 

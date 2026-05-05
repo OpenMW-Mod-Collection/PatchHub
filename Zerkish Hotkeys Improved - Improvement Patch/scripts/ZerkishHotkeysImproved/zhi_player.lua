@@ -150,7 +150,7 @@ local function loadDataV1(data)
         end
     end
 
-    print('ZHI LOAD HOTBARS V1')
+    -- print('ZHI LOAD HOTBARS V1')
     ZHIHotbarData.loadHotbarData(data)
 end
 
@@ -169,7 +169,7 @@ local function isAnyWindowOpen()
     local value = false
     for i = 1, #ZHI_WINDOWS do
         if zhiWindows[i] then
-            print('ZHI isAnyWindowOpen open', i)
+            -- print('ZHI isAnyWindowOpen open', i)
             value = true
         end
     end
@@ -193,7 +193,7 @@ end
 local function closeAllWindows()
     local hasClosedWindows = false
     for k, v in pairs(zhiWindows) do
-        print('ZHI closeAllWindows - closing (' .. tostring(k) .. ')')
+        -- print('ZHI closeAllWindows - closing (' .. tostring(k) .. ')')
         if zhiWindows[k] then
             auxUi.deepDestroy(zhiWindows[k])
             --zhiWindows[k]:destroy()
@@ -250,7 +250,7 @@ local function findUIHotkey(hotbar, key)
     local hotkeyLayout = ZMUtility.findLayoutByNameRecursive(zhiWindows[ZHI_WINDOWS.Main].layout.content, ident)
 
     if not hotkeyLayout then
-        print(string.format('findUIHotkey(%d, %d) = %s  (ident : %s)', hotbar, key, tostring(hotkeyLayout), ident))
+        -- print(string.format('findUIHotkey(%d, %d) = %s  (ident : %s)', hotbar, key, tostring(hotkeyLayout), ident))
     end
     return hotkeyLayout
 end
@@ -389,15 +389,15 @@ local function onHotkeySelectMenuChoice(hotbar, key, result)
     destroyWindow(ZHI_WINDOWS.HotkeySelect)
 
     if result == 'inventory' then
-        print('ZHI opening inventory menu')
+        -- print('ZHI opening inventory menu')
         openInventorySelectWindow(hotbar, key)
         I.ZHI.setMainWindowAlpha(BG_FADE_ALPHA)
     elseif result == 'magic' then
-        print('ZHI opening magic menu')
+        -- print('ZHI opening magic menu')
         openMagicSelectWindow(hotbar, key)
         I.ZHI.setMainWindowAlpha(BG_FADE_ALPHA)
     elseif result == 'delete' then
-        print('ZHI delete hotkey')
+        -- print('ZHI delete hotkey')
         local hkData = ZHIHotbarData.getHotkeyData(hotbar, key)
         ZHIHotbarData.resetHotkeyData(hkData)
         local hotkeyLayout = findUIHotkey(hotbar, key)
@@ -452,12 +452,12 @@ end
 local function openMainWindow()
     assert(not isWindowOpen(ZHI_WINDOWS.Main))
     if isWindowOpen(ZHI_WINDOWS.Main) then
-        print("ZHI mainWindow already open")
+        -- print("ZHI mainWindow already open")
         return
     end
 
     if isAnyWindowOpen() then
-        print("ZHI WARNING openMainWindow - has previously opened windows.")
+        -- print("ZHI WARNING openMainWindow - has previously opened windows.")
     end
 
     local callbacks = {
@@ -501,17 +501,17 @@ local function setOverrideDefaultQuickKeyMenu(value)
 end
 
 local function compatReplaceDefaultMenu()
-    print('ZHI compat replace QuickKeys Menu')
+    -- print('ZHI compat replace QuickKeys Menu')
     I.UI.registerWindow('QuickKeys', openMainWindow, closeAllWindows)
 end
 
 local function onQuickKeyMenuHandler()
     -- For compat mode we just ensure the mod state is consistent and rely on replacing the Window.
     if sCompatibilityMode then
-        print('ZHI onQuickKeyMenuHandler - Compatibility')
+        -- print('ZHI onQuickKeyMenuHandler - Compatibility')
         if ZHISaveData.onCloseQuickKeyMenuFirstTimeFlag == false then
             async:newUnsavableSimulationTimer(0.25, function()
-                print("ZHI set firstTimeQuickKeysMenuFlag")
+                -- print("ZHI set firstTimeQuickKeysMenuFlag")
                 setOverrideDefaultQuickKeyMenu(true)
                 ZHISaveData.onCloseQuickKeyMenuFirstTimeFlag = true
                 compatReplaceDefaultMenu()
@@ -536,7 +536,7 @@ local function onQuickKeyMenuHandler()
             -- HACK because we can't rely on the user to close with the F1 menu.
             -- We will also run ONE update after before the game pauses, so we can't immediately check in onUpdate.
             async:newUnsavableSimulationTimer(0.01, function()
-                print("ZHI set firstTimeQuickKeysMenuFlag")
+                -- print("ZHI set firstTimeQuickKeysMenuFlag")
                 setOverrideDefaultQuickKeyMenu(true)
                 destroyWindow(ZHI_WINDOWS.QuickKeyMenuPopup)
                 ZHISaveData.onCloseQuickKeyMenuFirstTimeFlag = true
@@ -630,7 +630,7 @@ local queuedStanceAttempts = 0
 local queuedStanceAttemptsMax = 5
 
 local function queueStanceChange(stance)
-    print('Queuing stance change', stanceStrings[stance])
+    -- print('Queuing stance change', stanceStrings[stance])
     queuedStance = stance
     queuedStanceTimer = 0.0
     queuedStanceAttempts = 0
@@ -677,7 +677,7 @@ end
 
 local function setSelectedSpell(actor, spell)
     if (not actor) or (not spell) then
-        print('ZHI setSelectedSpell', actor, spell)
+        -- print('ZHI setSelectedSpell', actor, spell)
         return
     end
 
@@ -706,7 +706,7 @@ end
 
 local function setSelectedEnchantedItem(actor, itemObject)
     if (not actor) or (not itemObject) then
-        print('ZHI setSelectedEnchantedItem', actor, itemObject)
+        -- print('ZHI setSelectedEnchantedItem', actor, itemObject)
         return
     end
 
@@ -729,7 +729,7 @@ end
 
 local function equipItemForActor(actor, itemObject, equipment, slot, isEnchantment)
     if (not actor) or (not itemObject) or (not equipment) or (not slot) then
-        print('ZHI equipItemForActor', actor, itemObject, equipment, slot)
+        -- print('ZHI equipItemForActor', actor, itemObject, equipment, slot)
         return false
     end
 
@@ -822,36 +822,36 @@ local function settingsListener(section, key)
     if section == "SettingsZHIAAMain" then
         if key == nil or key == "force_standard_ui" then
             sForceStandardUI = sectionData:get('force_standard_ui')
-            print('ZHI.sForceStandardUI = ', sForceStandardUI)
+            -- print('ZHI.sForceStandardUI = ', sForceStandardUI)
         end
         if key == nil or key == "auto_stance_change" then
             sAutoStanceChange = sectionData:get('auto_stance_change')
-            print('ZHI.sAutoStanceChange = ', sAutoStanceChange)
+            -- print('ZHI.sAutoStanceChange = ', sAutoStanceChange)
         end
         if key == nil or key == "enable_stance_queue" then
             sStanceQueue = sectionData:get('enable_stance_queue')
             I.Settings.updateRendererArgument('SettingsZHIAAMain', 'stance_queue_grace', {
                 disabled = not sStanceQueue,
             })
-            print('ZHI.sStanceQueue = ', sStanceQueue)
+            -- print('ZHI.sStanceQueue = ', sStanceQueue)
         end
         if key == nil or key == "stance_queue_grace" then
-            print('set grace')
+            -- print('set grace')
             sStanceQueueGracePeriod = sectionData:get('stance_queue_grace')
-            print('ZHI.sStanceQueueGracePeriod = ', sStanceQueueGracePeriod)
+            -- print('ZHI.sStanceQueueGracePeriod = ', sStanceQueueGracePeriod)
         end
         if key == nil or key == 'window_anchor_x' then
             sWindowAnchor = util.vector2(sectionData:get('window_anchor_x'), sWindowAnchor.y)
-            print('ZHI.sWindowAnchor = ', sWindowAnchor)
+            -- print('ZHI.sWindowAnchor = ', sWindowAnchor)
         end
         if key == nil or key == 'window_anchor_y' then
             sWindowAnchor = util.vector2(sWindowAnchor.x, sectionData:get('window_anchor_y'))
-            print('ZHI.sWindowAnchor = ', sWindowAnchor)
+            -- print('ZHI.sWindowAnchor = ', sWindowAnchor)
         end
     elseif section == 'SettingsZHIHotbarAAMain' then
         if key == nil or key == 'enable_hotbar_hud' then
             sShowHotbarHUD = sectionData:get('enable_hotbar_hud')
-            print('ZHI.sShowHotbarHUD = ', sShowHotbarHUD)
+            -- print('ZHI.sShowHotbarHUD = ', sShowHotbarHUD)
             if not showFirstTimeMessageAfterChargen then
                 ZHIHotbarHUD.setVisible(sShowHotbarHUD)
             end
@@ -859,19 +859,19 @@ local function settingsListener(section, key)
     elseif section == "SettingsZHIAAMisc" then
         if key == nil or key == "disable_firsttime_notifcation" then
             sDisableFirstTimeNotification = sectionData:get('disable_firsttime_notifcation')
-            print('ZHI.sDisableFirstTimeNotification = ', sDisableFirstTimeNotification)
+            -- print('ZHI.sDisableFirstTimeNotification = ', sDisableFirstTimeNotification)
         end
         if key == nil or key == "extended_tooltips" then
             sExtendedTooltipsEnabled = sectionData:get('extended_tooltips')
-            print('ZHI.sExtendedTooltipsEnabled = ', sExtendedTooltipsEnabled)
+            -- print('ZHI.sExtendedTooltipsEnabled = ', sExtendedTooltipsEnabled)
         end
         if key == nil or key == 'enable_ui_compat' then
             sCompatibilityMode = sectionData:get('enable_ui_compat')
-            print('ZHI.sEnableItemConditionCheck = ', sCompatibilityMode)
+            -- print('ZHI.sEnableItemConditionCheck = ', sCompatibilityMode)
         end
         if key == nil or key == 'enable_item_cond_check' then
             sEnableItemConditionCheck = sectionData:get('enable_item_cond_check')
-            print('ZHI.sEnableItemConditionCheck = ', sEnableItemConditionCheck)
+            -- print('ZHI.sEnableItemConditionCheck = ', sEnableItemConditionCheck)
         end
     end
 end
@@ -926,8 +926,8 @@ local function onToggleStance(bound)
 
     -- If the player is currently unable to switch stances, queue it up instead.
     if not canPlayerChangeStance() then
-        print(string.format('ZHI onToggleStance(%s) - Queuing, Current Stance: %s', stanceStrings[bound],
-            stanceStrings[stance]))
+        -- print(string.format('ZHI onToggleStance(%s) - Queuing, Current Stance: %s', stanceStrings[bound],
+            -- stanceStrings[stance]))
         -- Player is in the right stance, but trying to get out of it.
         if stance == bound then
             queueStanceChange(Actor.STANCE.Nothing)
@@ -936,8 +936,8 @@ local function onToggleStance(bound)
             queueStanceChange(bound)
         end
     else
-        print(string.format('ZHI onToggleStance(%s) - Ignored, Current Stance: %s', stanceStrings[bound],
-            stanceStrings[stance]))
+        -- print(string.format('ZHI onToggleStance(%s) - Ignored, Current Stance: %s', stanceStrings[bound],
+        --     stanceStrings[stance]))
     end
 
     -- If the player isn't blocked from stance changing we just don't do anything.
@@ -958,8 +958,8 @@ local function tryRegisterLayers()
     -- Again, doesn't take effect until next frame.
     local isZHIPopupNoInteractRegistered = ui.layers.indexOf('ZHI_POPUP_NO_INTERACT') ~= nil
 
-    print('ZHI tryRegisterLayers isZHIPopupRegistered', isZHIPopupRegistered)
-    print('ZHI tryRegisterLayers isZHIPopupNoInteractRegistered', isZHIPopupNoInteractRegistered)
+    -- print('ZHI tryRegisterLayers isZHIPopupRegistered', isZHIPopupRegistered)
+    -- print('ZHI tryRegisterLayers isZHIPopupNoInteractRegistered', isZHIPopupNoInteractRegistered)
 
     return isZHIPopupRegistered and isZHIPopupNoInteractRegistered
 end
@@ -1104,7 +1104,7 @@ return {
     engineHandlers = {
 
         onActive = function()
-            print('ZHI ON ACTIVE', ZHI_VERSION)
+            -- print('ZHI ON ACTIVE', ZHI_VERSION)
             --tryRegisterLayers()
 
             -- Load Settings Early!
@@ -1138,7 +1138,7 @@ return {
                     openFirstTimePopup()
                 else
                     -- Player is starting a new game, we need to delay the popup until they are finished with the intro.
-                    print('ZHI Delay until chargen is complete')
+                    -- print('ZHI Delay until chargen is complete')
                     showFirstTimeMessageAfterChargen = true
                 end
             end
@@ -1200,10 +1200,10 @@ return {
 
             if sStanceQueue and queuedStance then
                 if queuedStanceTimer > sStanceQueueGracePeriod then
-                    print('ZHI Reset Queued Stance - Expired', queuedStanceTimer, sStanceQueueGracePeriod)
+                    -- print('ZHI Reset Queued Stance - Expired', queuedStanceTimer, sStanceQueueGracePeriod)
                     queuedStance = nil
                 elseif canPlayerChangeStance() then
-                    print('ZHI Queued Stance Change', queuedStanceTimer, sStanceQueueGracePeriod)
+                    -- print('ZHI Queued Stance Change', queuedStanceTimer, sStanceQueueGracePeriod)
                     Actor.setStance(self, queuedStance)
 
                     -- If the stance change was accepted, reset.
@@ -1215,7 +1215,7 @@ return {
                         if queuedStanceAttempts >= queuedStanceAttemptsMax then
                             -- DEBUG
                             local anim = animation.getActiveGroup(self, animation.BONE_GROUP.RightArm)
-                            print('ZHI stance change attempts limit reached. Animation: ', anim)
+                            -- print('ZHI stance change attempts limit reached. Animation: ', anim)
 
                             queuedStance = nil
                             queuedStanceAttempts = 0
@@ -1229,20 +1229,20 @@ return {
         end,
 
         onInit = function(initData)
-            print('ZHI ON INIT', ZHI_VERSION)
+            -- print('ZHI ON INIT', ZHI_VERSION)
             ZHIHotbarData.initHotbars()
             --tryRegisterLayers()
         end,
 
         onSave = function()
-            print('ZHI ON SAVE', ZHI_VERSION)
+            -- print('ZHI ON SAVE', ZHI_VERSION)
             closeAllWindows()
             ZHIHotbarData.saveHotbarData(ZHISaveData)
             return ZHISaveData
         end,
 
         onLoad = function(loadData)
-            print('ZHI ON LOAD', ZHI_VERSION)
+            -- print('ZHI ON LOAD', ZHI_VERSION)
             closeAllWindows()
             ZHIHotbarData.initHotbars()
 
@@ -1261,7 +1261,7 @@ return {
 
         onKeyPress = function(key)
             if key.code == input.KEY.Escape then
-                print('ZHI CLOSE ALL WINDOWS')
+                -- print('ZHI CLOSE ALL WINDOWS')
                 closeAllWindows()
             end
 

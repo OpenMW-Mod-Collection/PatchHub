@@ -25,6 +25,7 @@ Fixes:
 - Fixed mod crashing if an item registered in the hotbar no longer exist in the game (mod adding it was removed mid-playthrough)
 - Hotkey UI no longer shows during dialogue, chargen and loading
 - Hotkey UI no longer can be used during werewolf transformation
+- Disabled all logging due to how excessive it was
 
 Requires: [Zerkish Hotkeys Improved](https://www.nexusmods.com/morrowind/mods/56583) version b1.6.4  
 Override files in the mod's folder with mine.
@@ -41,6 +42,18 @@ Fixes:
 - MG Conjurer rank now correctly gives 8% max magicka regen (instead of 80%)
 
 Requires: [Imperial Magicka Regeneration](https://www.nexusmods.com/morrowind/mods/53923) version 1.1.1  
+Override files in the mod's folder with mine.
+
+</details>
+
+<details>
+<summary>Attend Me - HUD Patch (OpenMW)</summary>
+
+Fixes:
+
+- Follower HUD visibility is synchronized with the rest of UI
+
+Requires: [Attend Me](https://www.nexusmods.com/morrowind/mods/51232) version 1.9  
 Override files in the mod's folder with mine.
 
 </details>
