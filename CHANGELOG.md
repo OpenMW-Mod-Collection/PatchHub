@@ -1,8 +1,12 @@
 # Bor's Patch Hub
 
-## 1.2
+## 1.3
 
 - Added a patch for Combat Sounds Overhaul
+
+## 1.2
+
+- Added a patch for Tel Meskoa
 
 ## 1.1
 

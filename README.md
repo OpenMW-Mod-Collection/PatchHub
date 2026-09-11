@@ -58,7 +58,18 @@ Override files in the mod's folder with mine.
 
 </details>
 <details>
-<summary>Combat SOunds Overhaul - Optimization Patch (OpenMW)</summary>
+<summary>Tel Meskoa and Tel Matouigius - Removed Birthsigns</summary>
+
+Removes the new birthsigns.
+
+They irritated me.
+
+Requires: [Tel Meskoa and Tel Matouigius EV](https://www.nexusmods.com/morrowind/mods/41896) version 1.9.3
+Load after the main mod. Works in vanilla engine.
+
+</details>
+<details>
+<summary>Combat Sounds Overhaul - Optimization Patch (OpenMW)</summary>
 
 Optimizes the crap out of the original script. In worst case scenario (center of Narsis) reduces ops/s from 10k to 1-1.5k.
 
