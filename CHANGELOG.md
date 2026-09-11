@@ -1,5 +1,9 @@
 # Bor's Patch Hub
 
+## 1.2
+
+- Added a patch for Combat Sounds Overhaul
+
 ## 1.1
 
 - Added a patch for Attend Me

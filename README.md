@@ -57,3 +57,12 @@ Requires: [Attend Me](https://www.nexusmods.com/morrowind/mods/51232) version 1.
 Override files in the mod's folder with mine.
 
 </details>
+<details>
+<summary>Combat SOunds Overhaul - Optimization Patch (OpenMW)</summary>
+
+Optimizes the crap out of the original script. In worst case scenario (center of Narsis) reduces ops/s from 10k to 1-1.5k.
+
+Requires: [Combat Sounds Overhaul](https://www.nexusmods.com/morrowind/mods/53859) version 2.0  
+Override files in the mod's folder with mine.
+
+</details>
