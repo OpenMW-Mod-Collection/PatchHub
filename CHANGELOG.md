@@ -1,5 +1,9 @@
 # Bor's Patch Hub
 
+## 1.3.1
+
+- ZHI: Fixed HUD visibility ignoring the settings (thx mym)
+
 ## 1.3
 
 - Added a patch for Combat Sounds Overhaul
