@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter, missing-fields
 -- Zerkish Hotkeys Improved - zhi_player.lua
 -- main player script
 
@@ -217,23 +218,7 @@ local function closeAllWindows()
 end
 
 local function openFirstTimePopup()
-    assert(isWindowOpen(ZHI_WINDOWS.FirstTimePopup) == false)
-
-    local resetUI = I.UI.getMode() == nil
-
-    if resetUI then
-        if not sCompatibilityMode then
-            I.Controls.overrideUiControls(true)
-        end
-        I.UI.setMode('Interface', { windows = {} })
-    end
-
-    local callbacks = {
-        okButton = closeAllWindows
-    }
-
-    zhiWindows[ZHI_WINDOWS.FirstTimePopup] = ZHIUI.createMessageBox(ZHIL10n('in_game_popup_header'), firstTimeMessage,
-        true, false, callbacks)
+    return
 end
 
 local function findUIHotkey(hotbar, key)
@@ -1074,32 +1059,27 @@ return {
     },
 
     eventHandlers = {
-        -- ZHI_HotkeySelectEvent = function(data)
-        --     print('ZHI_HotkeySelectEvent', data.spell, data.item, data.itemEnchant)
-        --     if data.spell then
-        --         print('Spell: ', data.spell.id)
-        --     elseif data.item then
-        --         print('Item', data.item.recordId, data.item.id, data.item.typeName)
-        --     elseif data.itemEnchant then
-        --         print('ItemEnchant', data.itemEnchant.recordId, data.itemEnchant.id, data.itemEnchant.typeName)
-        --     end
-        -- end,
-        -- ZHI_HotkeyEquipEvent = function(data)
-        --     print('ZHI_HotkeyEquipEvent', data.item)
-        --     if data.item then
-        --         print('Item', data.item.id, data.item.typeName)
-        --     end
-        -- end,
-        -- ZHI_HotkeyUseItemEvent = function(data)
-        --     print('ZHI_HotkeyUseItemEvent', data.item.id)
-        -- end,
         UiModeChanged = function(data)
             ZHIHotbarHUD.setVisible(
                 sShowHotbarHUD
                 and not uiModesWithNoHUD[data.newMode]
                 and (I.UI.isHudVisible() or data.oldMode == "Dialogue") -- exiting dialogue always enables HUD
             )
-        end
+        end,
+
+        ZHI_replaceItemInstance = function(data)
+            if not data or not data.oldId or not data.newId then return end
+
+            local changed = ZHIHotbarData.replaceItemInstance(
+                data.oldId, data.newId, data.recordId, data.typeStr)
+
+            if changed then
+                updateHotbarsUI()
+                if sShowHotbarHUD then
+                    ZHIHotbarHUD.updateHUD()
+                end
+            end
+        end,
     },
 
     engineHandlers = {

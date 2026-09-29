@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter, assign-type-mismatch
 -- Zerkish Improved Hotkeys - zhi_tooltip.lua
 -- tooltip utility file
 

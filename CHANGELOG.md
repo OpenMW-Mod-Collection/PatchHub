@@ -1,5 +1,9 @@
 # Bor's Patch Hub
 
+## 1.3.2
+
+- ZHI: Added Entropy support (thx tinumbra1)
+
 ## 1.3.1
 
 - ZHI: Fixed HUD visibility ignoring the settings (thx mym)

@@ -98,12 +98,49 @@ local function loadHotbarDataV1(loadData)
     return data
 end
 
+local function replaceItemInstance(oldId, newId, recordId, typeStr)
+    if not oldId or not newId then return false end
+
+    local changed = false
+
+    for bar = 1, I.ZHI.MAX_HOTBARS do
+        local max = (bar == 1) and 10 or 9
+
+        for key = 1, max do
+            local hk = getHotkeyData(bar, key)
+            if hk and hk.data and hk.data.item and hk.data.id == oldId then
+                hk.data.id = newId
+
+                if recordId then
+                    hk.data.item.recordId = recordId
+                end
+                if typeStr then
+                    hk.data.item.typeStr = typeStr
+                end
+
+                local ench = hk.data.item.enchantment
+                if ench and ench.id == oldId then
+                    ench.id = newId
+                end
+
+                changed = true
+            end
+        end
+    end
+
+    return changed
+end
+
+
 return {
     HOTKEY_TYPE = HOTKEY_TYPE,
 
     createHotkeyData = createHotkeyData,
     getHotkeyData = getHotkeyData,
     resetHotkeyData = resetHotkey,
+
+    -- [ZHI-ENTROPY] публичный API для обработчика события из zhi_player.lua
+    replaceItemInstance = replaceItemInstance,
 
     -- Empty Initialize hotbars
     initHotbars = function()

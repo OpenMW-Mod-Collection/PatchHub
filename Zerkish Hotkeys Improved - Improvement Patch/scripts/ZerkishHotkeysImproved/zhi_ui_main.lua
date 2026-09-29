@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter, missing-fields
 -- Zerkish Hotkeys Improved - zhi_ui_main.lua
 -- Main window for selecting hotkeys
 

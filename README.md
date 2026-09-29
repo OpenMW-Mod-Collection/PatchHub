@@ -26,9 +26,15 @@ Fixes:
 - Hotkey UI no longer shows during dialogue, chargen and loading
 - Hotkey UI no longer can be used during werewolf transformation
 - Disabled all logging due to how excessive it was
+- Added [Entropy](https://www.nexusmods.com/morrowind/mods/58207) support
 
 Requires: [Zerkish Hotkeys Improved](https://www.nexusmods.com/morrowind/mods/56583) version b1.6.4  
 Override files in the mod's folder with mine.
+
+Contributors:
+
+- mym
+- tinumbra1
 
 </details>
 

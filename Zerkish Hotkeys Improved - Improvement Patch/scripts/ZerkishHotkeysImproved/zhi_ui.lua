@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter, missing-fields
 -- Zerksih Hotkeys Improved - zhi_ui
 -- UI Functionality for ZHI.
 
