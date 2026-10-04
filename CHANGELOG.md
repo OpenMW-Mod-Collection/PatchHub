@@ -1,5 +1,9 @@
 # Bor's Patch Hub
 
+## 1.4
+
+- Added a patch for OAAB Odai Plateau Refurnished
+
 ## 1.3.2
 
 - ZHI: Added Entropy support (thx tinumbra1)
