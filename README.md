@@ -19,7 +19,7 @@ Install like any other mod out there. Load order doesn't matter.
 <details>
 <summary>OAAB Odai Plateau Refurnished - Entracne Patch (OpenMW)</summary>
 
-Similarly to my Web of Mephala patch, forces you to teleport in the correct place when entering Rethan Manor. The mod aouthor wasn't able to confirm the issue, so I might be alone with this issue.
+Similarly to my Web of Mephala patch, forces you to teleport in the correct place when entering Rethan Manor. The mod aouthor wasn't able to confirm the issue, so you might not need it.
 
 Requires: [OAAB Odai Plateau Refurnished](https://www.nexusmods.com/morrowind/mods/60377)  
 Install like any other mod out there. Load order doesn't matter.
