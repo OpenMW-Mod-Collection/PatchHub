@@ -13,7 +13,6 @@ Brute force solution to load order issue or a mod conflict. I'm not sure myself 
 
 Requires: [Web of Mephala Morag Tong Headquarters](https://www.nexusmods.com/morrowind/mods/55163)  
 Install like any other mod out there. Load order doesn't matter.
-
 </details>
 
 <details>
@@ -45,7 +44,6 @@ Contributors:
 
 - mym
 - tinumbra1
-
 </details>
 
 <details>
@@ -59,20 +57,8 @@ Fixes:
 
 Requires: [Imperial Magicka Regeneration](https://www.nexusmods.com/morrowind/mods/53923) version 1.1.1  
 Override files in the mod's folder with mine.
-
 </details>
 
-<details>
-<summary>Attend Me - HUD Patch (OpenMW)</summary>
-
-Fixes:
-
-- Follower HUD visibility is synchronized with the rest of UI
-
-Requires: [Attend Me](https://www.nexusmods.com/morrowind/mods/51232) version 1.9  
-Override files in the mod's folder with mine.
-
-</details>
 <details>
 <summary>Tel Meskoa and Tel Matouigius - Removed Birthsigns</summary>
 
@@ -82,14 +68,30 @@ They irritated me.
 
 Requires: [Tel Meskoa and Tel Matouigius EV](https://www.nexusmods.com/morrowind/mods/41896) version 1.9.3
 Load after the main mod. Works in vanilla engine.
-
 </details>
+
+## Outdated
+
+<details>
+<summary>Attend Me - HUD Patch (OpenMW)</summary>
+
+**Use [Best Friends Forever](https://www.nexusmods.com/morrowind/mods/59384) instead.**
+
+Fixes:
+
+- Follower HUD visibility is synchronized with the rest of UI
+
+Requires: [Attend Me](https://www.nexusmods.com/morrowind/mods/51232) version 1.9  
+Override files in the mod's folder with mine.
+</details>
+
 <details>
 <summary>Combat Sounds Overhaul - Optimization Patch (OpenMW)</summary>
+
+**Use [Combat Sounds Overhaul Overhauled](https://www.nexusmods.com/morrowind/mods/60361) instead.**
 
 Optimizes the crap out of the original script. In worst case scenario (center of Narsis) reduces ops/s from 10k to 1-1.5k.
 
 Requires: [Combat Sounds Overhaul](https://www.nexusmods.com/morrowind/mods/53859) version 2.0  
 Override files in the mod's folder with mine.
-
 </details>
